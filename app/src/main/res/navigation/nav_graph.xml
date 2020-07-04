@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/MainFragment"
-        android:name="com.rawa.notes.feature.main.MainFragment"
+        android:name="com.rawa.notes.ui.feature.main.MainFragment"
         android:label="@string/main_fragment_label"
         tools:layout="@layout/fragment_main"
         >
@@ -17,16 +17,26 @@
             android:id="@+id/action_MainFragment_to_detailFragment"
             app:destination="@id/detailFragment"
             />
+        <action
+            android:id="@+id/action_MainFragment_to_addNote"
+            app:destination="@id/addNote"
+            />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.rawa.notes.feature.detail.DetailFragment"
+        android:name="com.rawa.notes.ui.feature.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail"
         >
         <argument
             android:name="detailNavArg"
-            app:argType="com.rawa.notes.feature.detail.DetailArg"
+            app:argType="com.rawa.notes.ui.feature.detail.DetailArg"
             />
     </fragment>
+    <fragment
+        android:id="@+id/addNote"
+        android:name="com.rawa.notes.ui.feature.addnote.AddNoteFragment"
+        android:label="addnote_fragment_label"
+        tools:layout="@layout/fragment_addnote"
+        />
 </navigation>

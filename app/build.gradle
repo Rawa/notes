@@ -71,9 +71,12 @@ dependencies {
 
     implementation "com.jakewharton.timber:timber:$timber_version"
 
+    implementation "com.github.square:cycler:$cycler_version"
+
     // code quality tools
     ktlint "com.github.shyiko:ktlint:$ktlint_version"
 
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"

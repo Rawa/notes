@@ -1,4 +1,4 @@
-package com.rawa.notes.feature.detail
+package com.rawa.notes.ui.feature.detail
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
