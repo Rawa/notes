@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/MainFragment"
+    >
+
+    <fragment
+        android:id="@+id/MainFragment"
+        android:name="com.rawa.notes.feature.main.MainFragment"
+        android:label="@string/main_fragment_label"
+        tools:layout="@layout/fragment_main"
+        >
+        <action
+            android:id="@+id/action_MainFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.rawa.notes.feature.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail"
+        >
+        <argument
+            android:name="detailNavArg"
+            app:argType="com.rawa.notes.feature.detail.DetailArg"
+            />
+    </fragment>
+</navigation>
