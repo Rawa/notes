@@ -21,8 +21,12 @@ Todos for the app
 ### Future / Ideas
 
 - [Firebase](https://firebase.google.com/) support for storing notes and logging in
-  - Swipe to refresh
+  - [Swipe to refresh](https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout)
 - Add badges on notes, for filtering of notes of different kinds
 - Pinning of note (To keep it on the top)
-- Fancy animation(s)?
+- Fancy animation(s) with [MotionLayout](https://developer.android.com/training/constraint-layout/motionlayout)
 - Switch out to use [compose](https://developer.android.com/jetpack/compose)
+
+# License
+
+See [LICENSE.md](LICENSE.md)
