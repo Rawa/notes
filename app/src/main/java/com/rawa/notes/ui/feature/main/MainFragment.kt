@@ -9,13 +9,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rawa.notes.R
-import com.rawa.notes.domain.Note
 import com.rawa.notes.ui.view.note.NoteCard
 import com.squareup.cycler.Recycler
-import com.squareup.cycler.toDataSource
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment : Fragment() {
+@AndroidEntryPoint
+class MainFragment : Fragment(), NotesView {
     private lateinit var recycler: Recycler<NotesRow>
 
     override fun onCreateView(
@@ -29,17 +29,6 @@ class MainFragment : Fragment() {
 
         rv_main_notes.layoutManager = LinearLayoutManager(requireContext())
         bindRV(rv_main_notes)
-
-        recycler.data = listOf(
-            NotesRow.NoteRow(Note(1, "Title", "Text")),
-            NotesRow.NoteRow(Note(2, "Title A very long title that won't fit completely in the card", "Text")),
-            NotesRow.NoteRow(Note(3, "Title", "A very long text what hopefully will wrap")),
-            NotesRow.NoteRow(Note(4, "Title", "This is a mega super long text that will be ellipsized at the end because it is too long to be shown within the 3 lines of the textview. So lets add the extra words to tip the size")),
-            NotesRow.NoteRow(Note(5, "Title", "Text")),
-            NotesRow.NoteRow(Note(6, "Title A very long title that won't fit completely in the card", "Text")),
-            NotesRow.NoteRow(Note(7, "Title", "A very long text what hopefully will wrap")),
-            NotesRow.NoteRow(Note(8, "Title", "This is a mega super long text that will be ellipsized at the end because it is too long to be shown within the 3 lines of the textview. So lets add the extra words to tip the size"))
-        ).toDataSource()
 
         fab_main_addnote.setOnClickListener {
             findNavController().navigate(MainFragmentDirections.actionMainFragmentToAddNote())
@@ -58,9 +47,9 @@ class MainFragment : Fragment() {
             }
             extraItem<NotesRow.NoItems, View> {
                 create {
-                    this.view = layoutInflater.inflate(R.layout.notesrow_noitems, rv_main_notes, false)
+                    this.view =
+                        layoutInflater.inflate(R.layout.notesrow_noitems, rv_main_notes, false)
                 }
-
             }
         }
     }

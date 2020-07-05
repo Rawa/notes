@@ -1,9 +1,11 @@
 package com.rawa.notes
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
-class App : Application() {
+@HiltAndroidApp
+class App : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
 

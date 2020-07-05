@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
@@ -58,6 +60,10 @@ configurations {
     ktlint
 }
 
+kapt {
+    correctErrorTypes true
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -73,6 +79,19 @@ dependencies {
 
     implementation "com.github.square:cycler:$cycler_version"
 
+    implementation "androidx.multidex:multidex:$multidex_version"
+
+    implementation "com.google.dagger:hilt-android:$dagger_hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$dagger_hilt_version"
+
+    // For instrumentation tests
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$dagger_hilt_version"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$dagger_hilt_version"
+
+    // For local unit tests
+    testImplementation "com.google.dagger:hilt-android-testing:$dagger_hilt_version"
+    kaptTest "com.google.dagger:hilt-android-compiler:$dagger_hilt_version"
+
     // code quality tools
     ktlint "com.github.shyiko:ktlint:$ktlint_version"
 
@@ -81,6 +100,7 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 }
+
 
 task ktlint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style."
