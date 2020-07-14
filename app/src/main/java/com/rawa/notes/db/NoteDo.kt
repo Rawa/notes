@@ -7,17 +7,17 @@ import com.rawa.notes.domain.Note
 
 @Entity(tableName = "Note")
 data class NoteDo(
-    @PrimaryKey val id: Int,
     @ColumnInfo(name = "title") val title: String,
-    @ColumnInfo(name = "text") val text: String
-
+    @ColumnInfo(name = "text") val text: String,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0L
 ) {
+    constructor(note: Note) : this(note.title, note.text, note.id)
 
     fun toNote(): Note {
         return Note(
-            id,
             title,
-            text
+            text,
+            id
         )
     }
 }

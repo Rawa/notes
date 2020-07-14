@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.notesrow_note.view.*
 class NoteCard(context: Context, attr: AttributeSet? = context.getAttr(R.layout.notesrow_note), defStyleAttr: Int = 0) :
     FrameLayout(context, attr, defStyleAttr) {
 
-    private var noteId = -1
+    private var noteId = -1L
 
     init {
         LayoutInflater.from(context).inflate(R.layout.notesrow_note, this)

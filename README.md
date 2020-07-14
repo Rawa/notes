@@ -6,9 +6,9 @@ Simple notes android app for creating notes and storing notes using a clean arch
 
 Todos for the app
 
-- [ ] Use coroutines
-- [ ] Use [Dagger](https://dagger.dev/) and possibly [hilt](https://dagger.dev/hilt)
-- [ ] Add [Room](https://developer.android.com/topic/libraries/architecture/room) for persistant storage of notes
+- [x] Use coroutines
+- [x] Use [Dagger](https://dagger.dev/) and possibly [hilt](https://dagger.dev/hilt)
+- [x] Add [Room](https://developer.android.com/topic/libraries/architecture/room) for persistant storage of notes
   - Soft deletion and Archiving of notes
     - Quick undo toast
 - [ ] Usage of [Arrow](https://arrow-kt.io/docs/0.10/apidocs/arrow-core-data/arrow.core/-either/)

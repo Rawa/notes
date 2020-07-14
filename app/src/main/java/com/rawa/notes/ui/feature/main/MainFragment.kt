@@ -5,18 +5,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rawa.notes.R
+import com.rawa.notes.repository.NotesRepository
 import com.rawa.notes.ui.view.note.NoteCard
 import com.squareup.cycler.Recycler
+import com.squareup.cycler.toDataSource
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainFragment : Fragment(), NotesView {
     private lateinit var recycler: Recycler<NotesRow>
+
+    // TODO("Move to view model")
+    @Inject
+    lateinit var notes: NotesRepository
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,6 +61,16 @@ class MainFragment : Fragment(), NotesView {
                     this.view =
                         layoutInflater.inflate(R.layout.notesrow_noitems, rv_main_notes, false)
                 }
+            }
+        }
+    }
+
+    @InternalCoroutinesApi
+    override fun onResume() {
+        super.onResume()
+        lifecycleScope.launch {
+            notes.notes().collect { it ->
+                recycler.data = it.map { NotesRow.NoteRow(it) }.toDataSource()
             }
         }
     }

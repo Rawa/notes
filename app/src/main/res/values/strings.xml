@@ -8,4 +8,7 @@
     <string name="hello_main_fragment">Hello main fragment</string>
     <string name="hello_detail_fragment">Hello detail fragment. Arg: %1$s</string>
     <string name="there_are_no_notes">There are no notes</string>
+    <string name="addnote_title_hint">Title</string>
+    <string name="addnote_text_hint">Text</string>
+    <string name="addnote_add">Add Note</string>
 </resources>
