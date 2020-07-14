@@ -6,9 +6,7 @@ import com.rawa.notes.domain.Note
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-// Sample Notes repository
 class NotesRepositoryImpl(private val noteDao: NoteDao) : NotesRepository {
-
     override fun notes(): Flow<List<Note>> {
         return noteDao.allNotes().map { notesDo -> notesDo.map { it.toNote() } }
     }

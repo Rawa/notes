@@ -1,11 +1,11 @@
 package com.rawa.notes.ui.feature.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,16 +18,18 @@ import com.squareup.cycler.toDataSource
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.fragment_main.*
-import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class MainFragment : Fragment(), NotesView {
     private lateinit var recycler: Recycler<NotesRow>
 
     // TODO("Move to view model")
+    private val mainViewModel: MainViewModel by viewModels()
+
     @Inject
     lateinit var notes: NotesRepository
 
@@ -46,6 +48,12 @@ class MainFragment : Fragment(), NotesView {
         fab_main_addnote.setOnClickListener {
             findNavController().navigate(MainFragmentDirections.actionMainFragmentToAddNote())
         }
+
+        lifecycleScope.launch {
+            mainViewModel.notes.collect {
+                recycler.data = it.toDataSource()
+            }
+        }
     }
 
     private fun bindRV(rv: RecyclerView) {
@@ -63,17 +71,6 @@ class MainFragment : Fragment(), NotesView {
                     this.view =
                         layoutInflater.inflate(R.layout.notesrow_noitems, rv_main_notes, false)
                 }
-            }
-        }
-    }
-
-    @InternalCoroutinesApi
-    override fun onResume() {
-        super.onResume()
-        lifecycleScope.launch {
-            notes.notes().collect { it ->
-                Timber.d("Updating notes: $it")
-                recycler.data = it.map { NotesRow.NoteRow(it) }.toDataSource()
             }
         }
     }

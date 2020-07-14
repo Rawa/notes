@@ -1,7 +1,6 @@
 package com.rawa.notes.db
 
 import androidx.room.TypeConverter
-import timber.log.Timber
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
@@ -15,6 +14,5 @@ class TimeConverter {
     fun toOffsetDateTime(value: String?): OffsetDateTime? {
         value ?: return null
         return OffsetDateTime.parse(value)
-
     }
 }
