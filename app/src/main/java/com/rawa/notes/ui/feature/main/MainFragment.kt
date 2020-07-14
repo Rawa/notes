@@ -1,6 +1,7 @@
 package com.rawa.notes.ui.feature.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MainFragment : Fragment(), NotesView {
@@ -70,6 +72,7 @@ class MainFragment : Fragment(), NotesView {
         super.onResume()
         lifecycleScope.launch {
             notes.notes().collect { it ->
+                Timber.d("Updating notes: $it")
                 recycler.data = it.map { NotesRow.NoteRow(it) }.toDataSource()
             }
         }
