@@ -2,7 +2,6 @@ package com.rawa.notes.ui.feature.addnote
 
 import com.rawa.notes.repository.NotesRepository
 import com.rawa.notes.usecases.AddNoteUseCase
-import com.rawa.notes.usecases.NoteUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -25,7 +25,13 @@ data class NoteDo(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0L
 ) {
-    constructor(note: Note) : this(note.title, note.text, note.createdAt, note.lastEditedAt, note.id)
+    constructor(note: Note) : this(
+        note.title,
+        note.text,
+        note.createdAt,
+        note.lastEditedAt,
+        note.id
+    )
 
     fun toNote(): Note {
         return Note(

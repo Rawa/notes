@@ -6,7 +6,6 @@ import com.rawa.notes.domain.Note
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapNotNull
-import timber.log.Timber
 
 class NotesRepositoryImpl(private val noteDao: NoteDao) : NotesRepository {
     override fun notes(): Flow<List<Note>> {

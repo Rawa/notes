@@ -28,7 +28,7 @@ class MainViewModel @ViewModelInject constructor(
             notesUseCase.execute().collect { notes ->
                 _viewState.value = _viewState.value.copy(
                     notes = notes.map { note -> NotesRow.NoteRow(note) },
-                    extraItem = if(notes.isEmpty()) NotesRow.NoItems else null
+                    extraItem = if (notes.isEmpty()) NotesRow.NoItems else null
                 )
             }
         }

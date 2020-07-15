@@ -67,10 +67,12 @@ class MainFragment : Fragment(), NotesView {
                     bind { item ->
                         view.render(item.note)
                         view.setOnClickListener {
-                            findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(
-                                item.note.title,
-                                DetailArg(item.note.id)
-                            ))
+                            findNavController().navigate(
+                                MainFragmentDirections.actionMainFragmentToDetailFragment(
+                                    item.note.title,
+                                    DetailArg(item.note.id)
+                                )
+                            )
                         }
                     }
                 }

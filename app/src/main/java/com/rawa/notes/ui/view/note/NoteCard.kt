@@ -5,13 +5,16 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import com.rawa.notes.R
 import com.rawa.notes.domain.Note
 import com.rawa.notes.ui.getAttr
 import kotlinx.android.synthetic.main.notesrow_note.view.*
 
-class NoteCard(context: Context, attr: AttributeSet? = context.getAttr(R.layout.notesrow_note), defStyleAttr: Int = 0) :
+class NoteCard(
+    context: Context,
+    attr: AttributeSet? = context.getAttr(R.layout.notesrow_note),
+    defStyleAttr: Int = 0
+) :
     FrameLayout(context, attr, defStyleAttr) {
 
     private var noteId = -1L
