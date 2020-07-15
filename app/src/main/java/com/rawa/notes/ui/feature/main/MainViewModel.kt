@@ -19,14 +19,17 @@ class MainViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _notes = MutableStateFlow(emptyList<NotesRow>())
+    private val _viewState = MutableStateFlow(MainViewState(emptyList()))
 
-    val notes: StateFlow<List<NotesRow>> = _notes
+    val notes: StateFlow<MainViewState> = _viewState
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            notesUseCase.execute().collect {
-                _notes.value = it.map { NotesRow.NoteRow(it) }
+            notesUseCase.execute().collect { notes ->
+                _viewState.value = _viewState.value.copy(
+                    notes = notes.map { note -> NotesRow.NoteRow(note) },
+                    extraItem = if(notes.isEmpty()) NotesRow.NoItems else null
+                )
             }
         }
     }

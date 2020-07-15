@@ -8,6 +8,7 @@
     >
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_note_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -17,19 +18,21 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="12dp"
             >
 
             <TextView
                 android:id="@+id/tv_note_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
                 android:ellipsize="end"
                 android:lines="1"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:layout_margin="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_note_text"
                 tools:text="Title"
                 />
 
@@ -37,9 +40,9 @@
                 android:id="@+id/tv_note_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
                 android:ellipsize="end"
                 android:maxLines="3"
+                android:layout_margin="4dp"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

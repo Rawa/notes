@@ -5,6 +5,8 @@ import com.rawa.notes.db.NoteDo
 import com.rawa.notes.domain.Note
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapNotNull
+import timber.log.Timber
 
 class NotesRepositoryImpl(private val noteDao: NoteDao) : NotesRepository {
     override fun notes(): Flow<List<Note>> {
@@ -12,7 +14,7 @@ class NotesRepositoryImpl(private val noteDao: NoteDao) : NotesRepository {
     }
 
     override fun getNote(id: Long): Flow<Note> {
-        return noteDao.findNote(id).map { it.toNote() }
+        return noteDao.findNote(id).mapNotNull { it?.toNote() }
     }
 
     override suspend fun addNote(note: Note) {
@@ -21,5 +23,9 @@ class NotesRepositoryImpl(private val noteDao: NoteDao) : NotesRepository {
 
     override suspend fun removeNote(note: Note) {
         noteDao.removeNote(NoteDo(note))
+    }
+
+    override suspend fun updateNote(note: Note) {
+        noteDao.updateNote(NoteDo(note))
     }
 }

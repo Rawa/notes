@@ -10,13 +10,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_detail_title"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/til_detail_text"
         android:layout_margin="16dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="@string/detail_title_hint"
+        app:layout_constraintBottom_toTopOf="@id/til_detail_text"
+        app:layout_constraintTop_toTopOf="parent"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -28,13 +28,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_detail_text"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        app:layout_constraintTop_toBottomOf="@id/til_detail_title"
-        app:layout_constraintBottom_toTopOf="@id/b_detail_save"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="@string/detail_text_hint"
+        app:layout_constraintBottom_toTopOf="@id/b_detail_save"
+        app:layout_constraintTop_toBottomOf="@id/til_detail_title"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -48,8 +48,17 @@
         android:id="@+id/b_detail_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/detail_save"
         android:layout_margin="16dp"
+        android:text="@string/detail_save"
+        app:layout_constraintBottom_toTopOf="@id/b_detail_delete"
+        />
+
+    <Button
+        android:id="@+id/b_detail_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/detail_delete"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

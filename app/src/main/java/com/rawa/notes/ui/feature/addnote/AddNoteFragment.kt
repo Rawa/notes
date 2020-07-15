@@ -5,22 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.rawa.notes.R
 import com.rawa.notes.domain.Note
-import com.rawa.notes.repository.NotesRepository
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.fragment_addnote.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class AddNoteFragment : Fragment() {
+@ExperimentalCoroutinesApi
+class AddNoteFragment : Fragment(), AddNoteView {
 
-    // TODO("Move to view model")
-    @Inject
-    lateinit var notes: NotesRepository
+    private val viewModel: AddNoteViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +38,7 @@ class AddNoteFragment : Fragment() {
                 tiet_addnote_text.text.toString()
             )
             lifecycleScope.launch {
-                notes.addNote(note)
+                viewModel.save(note)
                 findNavController().navigateUp()
             }
         }

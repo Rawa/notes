@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
@@ -51,7 +52,9 @@ class MainFragment : Fragment(), NotesView {
 
         lifecycleScope.launch {
             mainViewModel.notes.collect {
-                recycler.data = it.toDataSource()
+                Timber.d("New list of rows: $it")
+                recycler.data = it.notes.toDataSource()
+                recycler.extraItem = it.extraItem
             }
         }
     }
@@ -74,8 +77,7 @@ class MainFragment : Fragment(), NotesView {
             }
             extraItem<NotesRow.NoItems, View> {
                 create {
-                    this.view =
-                        layoutInflater.inflate(R.layout.notesrow_noitems, rv_main_notes, false)
+                    view = layoutInflater.inflate(R.layout.notesrow_noitems, rv_main_notes, false)
                 }
             }
         }

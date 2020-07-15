@@ -4,7 +4,10 @@ import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.rawa.notes.domain.Note
+import com.rawa.notes.usecases.DeleteNoteUseCase
 import com.rawa.notes.usecases.NoteUseCase
+import com.rawa.notes.usecases.UpdateNoteUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -12,6 +15,8 @@ import kotlinx.coroutines.flow.map
 @ExperimentalCoroutinesApi
 class DetailViewModel @ViewModelInject constructor(
     private val noteUseCase: NoteUseCase,
+    private val updateNoteUseCase: UpdateNoteUseCase,
+    private val deleteNoteUseCase: DeleteNoteUseCase,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -22,5 +27,13 @@ class DetailViewModel @ViewModelInject constructor(
         return noteUseCase.execute(id).map {
             DetailViewState(it)
         }
+    }
+
+    suspend fun save(note: Note) {
+        updateNoteUseCase.execute(note)
+    }
+
+    suspend fun delete(note: Note) {
+        deleteNoteUseCase.execute(note)
     }
 }
