@@ -17,6 +17,7 @@ Todos for the app
   - Tier 1 [Espresso](https://developer.android.com/training/testing/espresso)
   - Tier 2 [Roboelectric](https://robolectric.org/)
   - Tier 3 [Spek](https://www.spekframework.org/) / [Mockito](https://site.mockito.org/) / JUnit test
+- [ ] Multi module app
 
 ### Future / Ideas
 
@@ -25,7 +26,7 @@ Todos for the app
 - [ ] Add badges on notes, for filtering of notes of different kinds
 - [ ] Pinning of note (To keep it on the top)
 - [ ] Fancy animation(s) with [MotionLayout](https://developer.android.com/training/constraint-layout/motionlayout)
-- [ ] Switch out to use [compose](https://developer.android.com/jetpack/compose)
+- [ ] Switch out UI and use [compose](https://developer.android.com/jetpack/compose)
 
 # License
 
