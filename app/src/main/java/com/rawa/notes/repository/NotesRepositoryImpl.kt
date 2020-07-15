@@ -11,7 +11,7 @@ class NotesRepositoryImpl(private val noteDao: NoteDao) : NotesRepository {
         return noteDao.allNotes().map { notesDo -> notesDo.map { it.toNote() } }
     }
 
-    override fun getNote(id: Int): Flow<Note> {
+    override fun getNote(id: Long): Flow<Note> {
         return noteDao.findNote(id).map { it.toNote() }
     }
 

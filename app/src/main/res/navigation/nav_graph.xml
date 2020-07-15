@@ -25,9 +25,13 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.rawa.notes.ui.feature.detail.DetailFragment"
-        android:label="fragment_detail"
+        android:label="{title}"
         tools:layout="@layout/fragment_detail"
         >
+        <argument
+            android:name="title"
+            app:argType="string"
+            />
         <argument
             android:name="detailNavArg"
             app:argType="com.rawa.notes.ui.feature.detail.DetailArg"
@@ -36,7 +40,7 @@
     <fragment
         android:id="@+id/addNote"
         android:name="com.rawa.notes.ui.feature.addnote.AddNoteFragment"
-        android:label="addnote_fragment_label"
+        android:label="@string/fragment_addnote_label"
         tools:layout="@layout/fragment_addnote"
         />
 </navigation>

@@ -11,4 +11,8 @@
     <string name="addnote_title_hint">Title</string>
     <string name="addnote_text_hint">Text</string>
     <string name="addnote_add">Add Note</string>
+    <string name="detail_text_hint">Text</string>
+    <string name="detail_save">Save</string>
+    <string name="detail_title_hint">Title</string>
+    <string name="fragment_addnote_label">New Note</string>
 </resources>

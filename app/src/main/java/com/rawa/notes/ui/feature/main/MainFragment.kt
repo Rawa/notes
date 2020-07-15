@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rawa.notes.R
 import com.rawa.notes.repository.NotesRepository
+import com.rawa.notes.ui.feature.detail.DetailArg
 import com.rawa.notes.ui.view.note.NoteCard
 import com.squareup.cycler.Recycler
 import com.squareup.cycler.toDataSource
@@ -27,7 +28,6 @@ import kotlinx.coroutines.launch
 class MainFragment : Fragment(), NotesView {
     private lateinit var recycler: Recycler<NotesRow>
 
-    // TODO("Move to view model")
     private val mainViewModel: MainViewModel by viewModels()
 
     @Inject
@@ -63,6 +63,12 @@ class MainFragment : Fragment(), NotesView {
                     view = NoteCard(context)
                     bind { item ->
                         view.render(item.note)
+                        view.setOnClickListener {
+                            findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(
+                                item.note.title,
+                                DetailArg(item.note.id)
+                            ))
+                        }
                     }
                 }
             }
