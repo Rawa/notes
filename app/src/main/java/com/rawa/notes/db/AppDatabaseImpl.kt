@@ -8,6 +8,3 @@ abstract class AppDatabaseImpl : RoomDatabase(), AppDatabase {
     abstract override fun noteDao(): NoteDao
 }
 
-interface AppDatabase {
-    fun noteDao(): NoteDao
-}
