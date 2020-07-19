@@ -7,4 +7,3 @@ import androidx.room.RoomDatabase
 abstract class AppDatabaseImpl : RoomDatabase(), AppDatabase {
     abstract override fun noteDao(): NoteDao
 }
-
