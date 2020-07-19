@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:padding="8dp"
     android:layout_height="match_parent"
     tools:context=".ui.feature.detail.DetailFragment"
     >
@@ -13,7 +14,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="8dp"
         android:hint="@string/detail_title_hint"
         app:layout_constraintBottom_toTopOf="@id/til_detail_text"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,7 +34,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
+        android:layout_margin="8dp"
         android:hint="@string/detail_text_hint"
         app:layout_constraintBottom_toTopOf="@id/b_detail_save"
         app:layout_constraintTop_toBottomOf="@id/til_detail_title"
@@ -50,7 +51,7 @@
         android:id="@+id/b_detail_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="8dp"
         android:text="@string/detail_save"
         app:layout_constraintBottom_toTopOf="@id/b_detail_delete"
         />
@@ -59,7 +60,7 @@
         android:id="@+id/b_detail_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="8dp"
         android:text="@string/detail_delete"
         app:layout_constraintBottom_toBottomOf="parent"
         />
