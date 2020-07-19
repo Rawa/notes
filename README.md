@@ -10,8 +10,8 @@ Todos for the app
 - [x] Use [Dagger](https://dagger.dev/) and possibly [hilt](https://dagger.dev/hilt)
 - [x] Use shortcut with deeplink to add notes
 - [x] Add [Room](https://developer.android.com/topic/libraries/architecture/room) for persistant storage of notes
-  - Soft deletion and Archiving of notes
-    - Quick undo toast
+  - [x] Soft deletion and Archiving of notes
+    - [x] Quick undo toast
 - [ ] Usage of [Arrow](https://arrow-kt.io/docs/0.10/apidocs/arrow-core-data/arrow.core/-either/)
 - [x] CI using [GitHub Actions](https://github.com/marketplace/actions/) for linting and testing before MR/PR
 - [ ] Testing, testing, testing. 

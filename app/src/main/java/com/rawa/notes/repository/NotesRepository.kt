@@ -9,4 +9,5 @@ interface NotesRepository {
     suspend fun addNote(note: Note)
     suspend fun removeNote(note: Note)
     suspend fun updateNote(note: Note)
+    suspend fun softDeleteNote(noteId: Long, softDelete: Boolean)
 }
