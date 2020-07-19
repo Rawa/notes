@@ -8,6 +8,7 @@ Todos for the app
 
 - [x] Use coroutines
 - [x] Use [Dagger](https://dagger.dev/) and possibly [hilt](https://dagger.dev/hilt)
+- [x] Use shortcut with deeplink to add notes
 - [x] Add [Room](https://developer.android.com/topic/libraries/architecture/room) for persistant storage of notes
   - Soft deletion and Archiving of notes
     - Quick undo toast

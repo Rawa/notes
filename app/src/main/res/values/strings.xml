@@ -5,6 +5,8 @@
     <string name="detail_fragment_label">Selected Note</string>
     <string name="detail">Detail</string>
 
+    <string name="shortcut_add_note_longlabel">derpiderp</string>
+    <string name="shortcut_add_note_shortlabel">derp</string>
     <string name="hello_main_fragment">Hello main fragment</string>
     <string name="hello_detail_fragment">Hello detail fragment. Arg: %1$s</string>
     <string name="there_are_no_notes">There are no notes</string>

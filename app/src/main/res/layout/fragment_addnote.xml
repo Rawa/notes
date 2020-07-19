@@ -10,31 +10,33 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_addnote_title"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/til_addnote_text"
         android:layout_margin="16dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="@string/addnote_title_hint"
+        app:layout_constraintBottom_toTopOf="@id/til_addnote_text"
+        app:layout_constraintTop_toTopOf="parent"
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_addnote_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:singleLine="true"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_addnote_text"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        app:layout_constraintTop_toBottomOf="@id/til_addnote_title"
-        app:layout_constraintBottom_toTopOf="@id/b_addnote_save"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="@string/addnote_text_hint"
+        app:layout_constraintBottom_toTopOf="@id/b_addnote_save"
+        app:layout_constraintTop_toBottomOf="@id/til_addnote_title"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -48,8 +50,8 @@
         android:id="@+id/b_addnote_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/addnote_add"
         android:layout_margin="16dp"
+        android:text="@string/addnote_add"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 

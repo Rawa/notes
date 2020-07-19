@@ -42,5 +42,7 @@
         android:name="com.rawa.notes.ui.feature.addnote.AddNoteFragment"
         android:label="@string/fragment_addnote_label"
         tools:layout="@layout/fragment_addnote"
-        />
+        >
+        <deepLink app:uri="notes://add_note" />
+    </fragment>
 </navigation>
