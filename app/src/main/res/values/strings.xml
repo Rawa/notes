@@ -18,4 +18,6 @@
     <string name="detail_title_hint">Title</string>
     <string name="fragment_addnote_label">New Note</string>
     <string name="detail_delete">Delete</string>
+    <string name="detail_delete_snackbar">Note deleted</string>
+    <string name="detail_delete_snackbar_action">undo</string>
 </resources>

@@ -22,6 +22,12 @@ data class NoteDo(
     @ColumnInfo(name = "edited_at")
     val lastEditedAt: OffsetDateTime? = null,
 
+    @ColumnInfo(name = "archived")
+    val archived: Boolean = false,
+
+    @ColumnInfo(name = "soft_deleted")
+    val softDeleted: Boolean = false,
+
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0L
 ) {
@@ -30,6 +36,8 @@ data class NoteDo(
         note.text,
         note.createdAt,
         note.lastEditedAt,
+        note.archived,
+        note.softDeleted,
         note.id
     )
 
@@ -39,6 +47,8 @@ data class NoteDo(
             text,
             createdAt,
             lastEditedAt,
+            archived,
+            softDeleted,
             id
         )
     }

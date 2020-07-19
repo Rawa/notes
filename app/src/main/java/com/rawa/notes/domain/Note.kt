@@ -7,5 +7,7 @@ data class Note(
     val text: String,
     val createdAt: OffsetDateTime = OffsetDateTime.now(),
     val lastEditedAt: OffsetDateTime? = null,
+    val archived: Boolean = false,
+    val softDeleted: Boolean = false,
     val id: Long = 0
 )

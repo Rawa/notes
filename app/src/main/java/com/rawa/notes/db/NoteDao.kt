@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDao {
-    @Query("SELECT * FROM Note")
+    @Query("SELECT * FROM Note WHERE soft_deleted=0 AND archived=0")
     fun allNotes(): Flow<List<NoteDo>>
 
     @Query("SELECT * FROM Note WHERE id=:id")
@@ -24,4 +24,10 @@ interface NoteDao {
 
     @Delete
     suspend fun removeNote(noteDo: NoteDo)
+
+    @Query("UPDATE Note SET archived = :archive WHERE id=:noteId")
+    suspend fun archiveNote(noteId: Long, archive: Boolean): Int
+
+    @Query("UPDATE Note SET soft_deleted = :softDelete WHERE id=:noteId")
+    suspend fun softDeleteNote(noteId: Long, softDelete: Boolean): Int
 }

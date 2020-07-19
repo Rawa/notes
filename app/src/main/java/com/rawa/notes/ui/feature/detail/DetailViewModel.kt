@@ -5,8 +5,8 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.rawa.notes.domain.Note
-import com.rawa.notes.usecases.DeleteNoteUseCase
 import com.rawa.notes.usecases.NoteUseCase
+import com.rawa.notes.usecases.SoftDeleteUseCase
 import com.rawa.notes.usecases.UpdateNoteUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.map
 class DetailViewModel @ViewModelInject constructor(
     private val noteUseCase: NoteUseCase,
     private val updateNoteUseCase: UpdateNoteUseCase,
-    private val deleteNoteUseCase: DeleteNoteUseCase,
+    private val softDeleteUseCase: SoftDeleteUseCase,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -34,6 +34,6 @@ class DetailViewModel @ViewModelInject constructor(
     }
 
     suspend fun delete(note: Note) {
-        deleteNoteUseCase.execute(note)
+        softDeleteUseCase.execute(note, true)
     }
 }

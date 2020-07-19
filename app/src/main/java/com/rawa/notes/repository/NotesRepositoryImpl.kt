@@ -9,7 +9,9 @@ import kotlinx.coroutines.flow.mapNotNull
 
 class NotesRepositoryImpl(private val noteDao: NoteDao) : NotesRepository {
     override fun notes(): Flow<List<Note>> {
-        return noteDao.allNotes().map { notesDo -> notesDo.map { it.toNote() } }
+        return noteDao.allNotes().map { notesDo ->
+            notesDo.map { it.toNote() }
+        }
     }
 
     override fun getNote(id: Long): Flow<Note> {
@@ -26,5 +28,9 @@ class NotesRepositoryImpl(private val noteDao: NoteDao) : NotesRepository {
 
     override suspend fun updateNote(note: Note) {
         noteDao.updateNote(NoteDo(note))
+    }
+
+    override suspend fun softDeleteNote(noteId: Long, softDelete: Boolean) {
+        noteDao.softDeleteNote(noteId, softDelete)
     }
 }

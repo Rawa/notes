@@ -11,11 +11,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.rawa.notes.R
 import com.rawa.notes.domain.Note
+import com.rawa.notes.ui.feature.main.NoteDeleted
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
@@ -35,8 +37,9 @@ class DetailFragment : Fragment(), DetailView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.execute(args.id).collect {
+                Timber.d("Render!")
                 render(it)
             }
         }
@@ -44,7 +47,10 @@ class DetailFragment : Fragment(), DetailView {
             val note = it.tag as Note
             lifecycleScope.launch {
                 viewModel.delete(note)
-                findNavController().navigateUp()
+
+                findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToMainFragment(
+                    NoteDeleted(note.id)
+                ))
             }
         }
         b_detail_save.setOnClickListener {
@@ -61,6 +67,14 @@ class DetailFragment : Fragment(), DetailView {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Timber.d("OnDestroyView!")
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.d("OnDestroy!")
+    }
     override fun noteId(): Long {
         return args.id
     }
