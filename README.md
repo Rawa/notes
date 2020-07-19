@@ -13,7 +13,7 @@ Todos for the app
   - Soft deletion and Archiving of notes
     - Quick undo toast
 - [ ] Usage of [Arrow](https://arrow-kt.io/docs/0.10/apidocs/arrow-core-data/arrow.core/-either/)
-- [ ] CI using [GitHub Actions](https://github.com/marketplace/actions/) for linting and testing before MR/PR
+- [x] CI using [GitHub Actions](https://github.com/marketplace/actions/) for linting and testing before MR/PR
 - [ ] Testing, testing, testing. 
   - Tier 1 [Espresso](https://developer.android.com/training/testing/espresso)
   - Tier 2 [Roboelectric](https://robolectric.org/)
