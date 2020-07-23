@@ -110,7 +110,16 @@ dependencies {
     // code quality tools
     ktlint "com.github.shyiko:ktlint:$ktlint_version"
 
+    // Corbind
+    implementation "ru.ldralighieri.corbind:corbind:$corbind_version"
+    implementation "ru.ldralighieri.corbind:corbind-appcompat:$corbind_version"
+    implementation "ru.ldralighieri.corbind:corbind-core:$corbind_version"
 
+    // Arrow
+    implementation "io.arrow-kt:arrow-core:$arrow_version"
+    implementation "io.arrow-kt:arrow-syntax:$arrow_version"
+    kapt    "io.arrow-kt:arrow-meta:$arrow_version"
+    
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
 
     testImplementation "junit:junit:$junit_version"
