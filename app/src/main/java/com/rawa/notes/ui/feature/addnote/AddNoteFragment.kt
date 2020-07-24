@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.rawa.notes.R
 import com.rawa.notes.domain.Note
+import com.rawa.notes.ui.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_addnote.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -39,6 +40,7 @@ class AddNoteFragment : Fragment(), AddNoteView {
             )
             lifecycleScope.launch {
                 viewModel.save(note)
+                hideKeyboard()
                 findNavController().navigateUp()
             }
         }
