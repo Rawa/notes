@@ -12,7 +12,6 @@ import com.rawa.notes.R
 import com.rawa.notes.domain.Note
 import com.rawa.notes.ui.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_addnote.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
@@ -33,6 +32,7 @@ class AddNoteFragment : Fragment(), AddNoteView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        /**
         b_addnote_save.setOnClickListener {
             val note = Note(
                 tiet_addnote_title.text.toString(),
@@ -44,5 +44,6 @@ class AddNoteFragment : Fragment(), AddNoteView {
                 findNavController().navigateUp()
             }
         }
+        */
     }
 }

@@ -6,10 +6,8 @@ interface NotesView
 
 sealed class NotesRow {
     data class NoteRow(val note: Note) : NotesRow()
-    object NoItems : NotesRow()
 }
 
 data class MainViewState(
-    val notes: List<NotesRow.NoteRow>,
-    val extraItem: Any? = null
+    val notes: List<NotesRow.NoteRow>
 )

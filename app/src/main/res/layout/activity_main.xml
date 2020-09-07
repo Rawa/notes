@@ -19,7 +19,7 @@
         app:layout_constraintRight_toRightOf="parent"
         />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
@@ -30,7 +30,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tb_activity_toolbar"
         app:navGraph="@navigation/nav_graph"
-        tools:ignore="FragmentTagUsage"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

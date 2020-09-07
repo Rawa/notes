@@ -13,7 +13,6 @@ import com.rawa.notes.R
 import com.rawa.notes.domain.Note
 import com.rawa.notes.ui.feature.main.NoteDeleted
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -43,6 +42,7 @@ class DetailFragment : Fragment(), DetailView {
                 render(it)
             }
         }
+        /**
         b_detail_delete.setOnClickListener {
             val note = it.tag as Note
             lifecycleScope.launch {
@@ -65,6 +65,7 @@ class DetailFragment : Fragment(), DetailView {
                 findNavController().navigateUp()
             }
         }
+        */
     }
 
     override fun onDestroyView() {
@@ -80,9 +81,11 @@ class DetailFragment : Fragment(), DetailView {
     }
 
     private fun render(detailViewState: DetailViewState) {
+        /**
         tiet_detail_title.setText(detailViewState.note?.title.toString())
         tiet_detail_text.setText(detailViewState.note?.text.toString())
         b_detail_save.tag = detailViewState.note
         b_detail_delete.tag = detailViewState.note
+        */
     }
 }
