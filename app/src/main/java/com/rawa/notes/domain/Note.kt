@@ -10,4 +10,6 @@ data class Note(
     val archived: Boolean = false,
     val softDeleted: Boolean = false,
     val id: Long = 0
-)
+) {
+    fun lastModified() = lastEditedAt ?: createdAt
+}
