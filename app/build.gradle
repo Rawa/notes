@@ -82,7 +82,7 @@ dependencies {
     implementation "com.google.android.material:material:$material_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-alpha06'
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
 
