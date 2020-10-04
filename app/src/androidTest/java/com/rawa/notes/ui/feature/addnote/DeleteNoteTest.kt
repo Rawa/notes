@@ -7,8 +7,8 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers.hasChildCount
 import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -21,8 +21,7 @@ import com.rawa.notes.db.DatabaseModule
 import com.rawa.notes.db.NoteDao
 import com.rawa.notes.db.NoteDo
 import com.rawa.notes.domain.Note
-import com.rawa.notes.utils.childMatcher
-import com.rawa.notes.utils.hasItem
+import com.rawa.notes.utils.hasNote
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,9 +32,8 @@ import dagger.hilt.android.testing.UninstallModules
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.runBlocking
-import org.hamcrest.CoreMatchers.anyOf
+import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.CoreMatchers.not
-import org.hamcrest.Matchers
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -92,17 +90,7 @@ class DeleteNoteTest {
     @Test
     fun deleteNote_mainActivity() {
         // Verify existence of test Note
-        onView(withId(R.id.rv_main_notes)).check(matches(hasChildCount(1)))
-        onView(withId(R.id.rv_main_notes))
-            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(0))
-            .check(
-                matches(
-                    Matchers.allOf(
-                        childMatcher(R.id.tv_note_text, 0, withText(testNote.text)),
-                        childMatcher(R.id.tv_note_title, 0, withText(testNote.title))
-                    )
-                )
-            )
+        onView(withId(R.id.rv_main_notes)).check(matches(hasNote(testNote)))
 
         // Click on the note
         onView(withId(R.id.rv_main_notes)).perform(
@@ -118,15 +106,21 @@ class DeleteNoteTest {
         onView(withId(R.id.rv_main_notes)).check(
             matches(
                 not(
-                    hasItem(
-                        hasDescendant(
-                            anyOf(
-                                withText(testNote.title),
-                                withText(testNote.text)
-                            )
-                        )
+                    hasNote(
+                        testNote
                     )
                 )
+            )
+        )
+
+        // Undo deletion with SnackBar
+        onView(allOf(withId(com.google.android.material.R.id.snackbar_action)))
+            .check(matches(isDisplayed()))
+            .perform(click())
+
+        onView(withId(R.id.rv_main_notes)).check(
+            matches(
+                hasNote(testNote)
             )
         )
     }

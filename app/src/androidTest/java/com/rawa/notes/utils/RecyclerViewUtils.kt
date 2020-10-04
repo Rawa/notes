@@ -3,8 +3,11 @@ package com.rawa.notes.utils
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.matcher.BoundedMatcher
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import com.rawa.notes.domain.Note
+import org.hamcrest.CoreMatchers
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.core.AllOf.allOf
@@ -48,4 +51,15 @@ fun hasItem(matcher: Matcher<View>): Matcher<View> {
             return false
         }
     }
+}
+
+fun hasNote(note: Note): Matcher<View> {
+    return hasItem(
+        hasDescendant(
+            CoreMatchers.anyOf(
+                ViewMatchers.withText(note.title),
+                ViewMatchers.withText(note.text)
+            )
+        )
+    )
 }
