@@ -1,11 +1,12 @@
 package com.rawa.notes.repository
 
+import arrow.core.left
+import arrow.core.right
 import com.rawa.notes.db.NoteDao
 import com.rawa.notes.db.NoteDo
 import com.rawa.notes.domain.Note
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.mapNotNull
 
 class NotesRepositoryImpl(private val noteDao: NoteDao) : NotesRepository {
     override fun notes(): Flow<List<Note>> {
@@ -14,8 +15,12 @@ class NotesRepositoryImpl(private val noteDao: NoteDao) : NotesRepository {
         }
     }
 
-    override fun getNote(id: Long): Flow<Note> {
-        return noteDao.findNote(id).mapNotNull { it?.toNote() }
+    override fun getNote(id: Long): Flow<GetNoteResult> {
+        return noteDao.findNote(id)
+            .map {
+                it ?: return@map GetNoteError.NoteNotFound.left()
+                GetNoteSuccess(it.toNote()).right()
+            }
     }
 
     override suspend fun addNote(note: Note) {
